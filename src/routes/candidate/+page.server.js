@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { redirect, fail } from '@sveltejs/kit';
 import { query } from '$lib/server/database';
 
 export const load = async ({ cookies }) => {
@@ -53,5 +53,29 @@ export const load = async ({ cookies }) => {
       candidate: null,
       appliedJobIds: []
     };
+  }
+};
+export const actions = {
+  cancel: async ({ request, cookies }) => {
+    const candidateSession = cookies.get('candidate_session');
+    
+    if (!candidateSession) {
+      return fail(401, { message: 'กรุณาเข้าสู่ระบบ' });
+    }
+
+    const formData = await request.formData();
+    const jobId = formData.get('job_id');
+
+    try {
+      // ลบการสมัครออกจากฐานข้อมูล
+      await query(
+        'DELETE FROM applications WHERE job_id = ? AND candidate_id = ?',
+        [jobId, candidateSession]
+      );
+
+      return { success: true, message: 'ยกเลิกการสมัครสำเร็จ' };
+    } catch (error) {
+      return fail(500, { message: 'เกิดข้อผิดพลาด' });
+    }
   }
 };
