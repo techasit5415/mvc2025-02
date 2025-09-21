@@ -12,11 +12,21 @@
     console.log("--- Component Loaded in Browser ---");
   });
 
- 
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   const submitLogin = () => {
     loading = true;
     return async ({ result, update }) => {
       loading = false;
+      
+      // เช็คอีเมลก่อนส่ง (ถ้า username มี @)
+      if (username.includes('@') && !validateEmail(username)) {
+        alert('กรุณากรอกอีเมลให้ถูกต้อง');
+        return;
+      }
       
       if (result.type === 'success') {
         console.log("Login success, redirecting...");
