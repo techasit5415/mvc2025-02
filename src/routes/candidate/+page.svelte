@@ -35,8 +35,8 @@ function canCancelApplication(deadline) {
     function applySorting() {
         sortedJobs = [...data.jobs].sort((a, b) => {
             switch (sortBy) {
-                // case 'title':
-                //   return a.title.localeCompare(b.title, 'th');
+                case 'title':
+                  return a.job_title.localeCompare(b.job_title, 'th');
                 case "company_name":
                     return a.company_name.localeCompare(b.company_name, "th");
                 case "deadline":

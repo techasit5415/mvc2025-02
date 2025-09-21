@@ -29,8 +29,8 @@
   function applySorting() {
     sortedJobs = [...data.jobs].sort((a, b) => {
       switch (sortBy) {
-        // case 'title':
-        //   return a.title.localeCompare(b.title, 'th');
+        case 'title':
+          return a.job_title.localeCompare(b.job_title, 'th');  // ใช้ job_title ทั้งคู่
         case 'company_name':
           return a.company_name.localeCompare(b.company_name, 'th');
         case 'deadline':
@@ -111,7 +111,7 @@
                 <strong>{job.company_name}</strong>
                 <span class="location">{job.location}</span>
               </div>
-              
+              <h4>{job.job_title}</h4>
               <p class="job-description">{job.description}</p>
               
               <div class="job-stats">

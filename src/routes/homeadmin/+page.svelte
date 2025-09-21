@@ -54,7 +54,7 @@
     </div>
 
     <div class="candidates-section">
-      <h2>รายชื่อผู้สมัคร (เรียงตามชื่อ)</h2>
+      <h2>รายชื่อผู้สมัคร </h2>
       
       {#if data.candidates.length > 0}
         <div class="candidates-table-container">

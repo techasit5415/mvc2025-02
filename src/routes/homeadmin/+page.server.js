@@ -9,7 +9,6 @@ export const load = async ({ cookies }) => {
   }
 
   try {
-    // ดึงรายชื่อผู้สมัครทั้งหมด เรียงตามชื่อ
     const candidates = await query(`
       SELECT 
         c.candidate_id,

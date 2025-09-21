@@ -12,7 +12,7 @@
     console.log("--- Component Loaded in Browser ---");
   });
 
-  // ใช้ SvelteKit form enhancement แทน fetch API
+ 
   const submitLogin = () => {
     loading = true;
     return async ({ result, update }) => {
@@ -34,9 +34,9 @@
 
 <form method="POST" use:enhance={submitLogin}>
   <div class="login-container">
-    <h2>Admin Login</h2>
+    <h2>Login</h2>
     <div class="photo">
-      <img src="/Photo/images.png" alt="icon" />
+      <img src="https://media1.tenor.com/m/ue7Q8JmP_0MAAAAd/oiia-oiiaoiia.gif" alt="icon" />
     </div>
 
     <div class="form-group">
@@ -88,7 +88,7 @@
 
 <style>
   .login-container {
-    width: 300px; /* กำหนดความกว้างตายตัว */
+    width: 300px; 
     max-width: 300px;
     padding: 2rem;
     border-radius: 8px;
@@ -114,7 +114,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    position: relative; /* เพื่อให้ icon อยู่ในตำแหน่งที่ถูกต้อง */
+    position: relative; 
   }
 
   label {
